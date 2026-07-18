@@ -1,67 +1,44 @@
-{
-  "chapters": [
-    {
-      "id": 1,
-      "subject": "Mathematics",
-      "chapters": [
-        {
-          "chapter_id": 1,
-          "name": "Real Numbers",
-          "topics": []
-        },
-        {
-          "chapter_id": 2,
-          "name": "Polynomials",
-          "topics": []
-        },
-        {
-          "chapter_id": 3,
-          "name": "Pair of Linear Equations in Two Variables",
-          "topics": []
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "subject": "Science",
-      "chapters": [
-        {
-          "chapter_id": 1,
-          "name": "Chemical Reactions and Equations",
-          "topics": []
-        },
-        {
-          "chapter_id": 2,
-          "name": "Acids, Bases and Salts",
-          "topics": []
-        },
-        {
-          "chapter_id": 3,
-          "name": "Metals and Non-metals",
-          "topics": []
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "subject": "Social Studies",
-      "chapters": [
-        {
-          "chapter_id": 1,
-          "name": "Indian History",
-          "topics": []
-        },
-        {
-          "chapter_id": 2,
-          "name": "Geography",
-          "topics": []
-        },
-        {
-          "chapter_id": 3,
-          "name": "Civics",
-          "topics": []
-        }
-      ]
+const chapters = require("../data/chapters.json");
+
+/**
+ * Finds a chapter by id across all subjects/branches and returns
+ * its title plus the subject/branch labels for context.
+ */
+function findChapter(chapterId) {
+  for (const [subjectKey, subject] of Object.entries(chapters)) {
+    for (const [branchKey, branch] of Object.entries(subject.branches)) {
+      const match = branch.chapters.find((c) => c.id === chapterId);
+      if (match) {
+        return {
+          subject: subject.label,
+          branch: branch.label,
+          chapter: match.title,
+          chapterId: match.id
+        };
+      }
     }
-  ]
+  }
+  return null;
 }
+
+/**
+ * Builds a system instruction that locks the AI to one chapter only.
+ * Every route (tutor, notes, flashcards, etc.) reuses this so the
+ * "stay on this chapter" rule is consistent everywhere.
+ */
+function buildChapterLockPrompt(chapterId, roleDescription) {
+  const info = findChapter(chapterId);
+  if (!info) {
+    throw new Error("Unknown chapterId: " + chapterId);
+  }
+
+  return {
+    info,
+    systemInstruction: `You are a CBSE Class 10 ${info.subject} (${info.branch}) teacher, ${roleDescription}
+You are ONLY allowed to discuss the chapter "${info.chapter}" from the NCERT Class 10 ${info.branch} textbook.
+If the student asks about any other chapter or subject, politely tell them to go back and select the correct chapter instead of answering.
+Base your answers on NCERT Class 10 concepts for the 2026-2027 academic year. Keep explanations simple, exam-focused, and structured with bullet points where useful.`
+  };
+}
+
+module.exports = { findChapter, buildChapterLockPrompt };
