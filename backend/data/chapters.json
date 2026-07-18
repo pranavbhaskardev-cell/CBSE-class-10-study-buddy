@@ -1,0 +1,67 @@
+{
+  "chapters": [
+    {
+      "id": 1,
+      "subject": "Mathematics",
+      "chapters": [
+        {
+          "chapter_id": 1,
+          "name": "Real Numbers",
+          "topics": []
+        },
+        {
+          "chapter_id": 2,
+          "name": "Polynomials",
+          "topics": []
+        },
+        {
+          "chapter_id": 3,
+          "name": "Pair of Linear Equations in Two Variables",
+          "topics": []
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "subject": "Science",
+      "chapters": [
+        {
+          "chapter_id": 1,
+          "name": "Chemical Reactions and Equations",
+          "topics": []
+        },
+        {
+          "chapter_id": 2,
+          "name": "Acids, Bases and Salts",
+          "topics": []
+        },
+        {
+          "chapter_id": 3,
+          "name": "Metals and Non-metals",
+          "topics": []
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "subject": "Social Studies",
+      "chapters": [
+        {
+          "chapter_id": 1,
+          "name": "Indian History",
+          "topics": []
+        },
+        {
+          "chapter_id": 2,
+          "name": "Geography",
+          "topics": []
+        },
+        {
+          "chapter_id": 3,
+          "name": "Civics",
+          "topics": []
+        }
+      ]
+    }
+  ]
+}
