@@ -1,0 +1,58 @@
+{
+  "subjects": [
+    {
+      "name": "Mathematics",
+      "code": "MATH",
+      "chapters": [
+        {
+          "id": 1,
+          "number": 1,
+          "name": "Real Numbers",
+          "topics": ["Euclid's Division Algorithm", "Fundamental Theorem of Arithmetic", "Irrational Numbers"]
+        },
+        {
+          "id": 2,
+          "number": 2,
+          "name": "Polynomials",
+          "topics": ["Zeros of Polynomials", "Division Algorithm", "Factorization"]
+        },
+        {
+          "id": 3,
+          "number": 3,
+          "name": "Pair of Linear Equations in Two Variables",
+          "topics": ["Graphical Method", "Algebraic Method", "Substitution", "Elimination"]
+        }
+      ]
+    },
+    {
+      "name": "Science",
+      "code": "SCI",
+      "chapters": [
+        {
+          "id": 1,
+          "number": 1,
+          "name": "Chemical Reactions and Equations",
+          "topics": ["Types of Reactions", "Balancing Equations", "Oxidation and Reduction"]
+        },
+        {
+          "id": 2,
+          "number": 2,
+          "name": "Acids, Bases and Salts",
+          "topics": ["pH Scale", "Neutralization", "Salt Formation"]
+        }
+      ]
+    },
+    {
+      "name": "Social Science",
+      "code": "SS",
+      "chapters": [
+        {
+          "id": 1,
+          "number": 1,
+          "name": "India and the Contemporary World - I",
+          "topics": ["The Rise of Nationalism in Europe", "Imperialism in Asia - Africa"]
+        }
+      ]
+    }
+  ]
+}
